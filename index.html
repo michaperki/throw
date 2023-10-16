@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Throw</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="header-text">
+          <h1>Throw</h1>
+          <h2>a modern ceramics studio</h2>
+        </div>
+      </div>
+      <div class="content">
+        <div class="content-image">
+          <img src="images/wheel.jpg" alt="wheel" />
+          <div class="image-text">
+            <h3>Create on your schedule</h3>
+            <p>Reserve wheel time using our app.</p>
+            <p>We provide the clay, tools, and kiln.</p>
+            <p>You provide the creativity.</p>
+          </div>
+        </div>
+      </div>
+      <h3>Get early access</h3>
+      <form method="POST" action="https://script.google.com/macros/s/AKfycbweq2boANemCZZwm3rZjEXOVOe8PGp0QeN4CghBr5tIw-gZBUyQRXKqVv9B9gjsZvg/exec" id="email-form">
+        <input name="Email" type="email" placeholder="Email" required />
+        <input name="Name" type="text" placeholder="Name" required />
+        <button type="submit">Send</button>
+      </form>
+      <div class="success-message" id="success-message">Thank you for signing up!</div>
+      <div class="footer">
+        <div class="footer-text">
+          <h3>Throw</h3>
+        </div>
+      </div>
+    </div>
+    <script>
+        window.addEventListener("load", function() {
+          const form = document.getElementById('email-form');
+          const successMessage = document.getElementById('success-message');
+      
+          form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            const action = form.action; // Use the form's action attribute
+      
+            fetch(action, {
+              method: 'POST',
+              body: data,
+            })
+            .then(() => {
+              // Form submitted successfully, show the success message
+              form.style.display = "none";
+              successMessage.style.display = "block";
+            });
+          });
+        });
+      </script>
+  </body>
+</html>
